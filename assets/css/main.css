@@ -155,7 +155,7 @@ input, select, textarea {
 		}
 
 	strong, b {
-		font-weight: 900;
+		font-weight: 700;
 	}
 
 	em, i {
@@ -2706,15 +2706,15 @@ input, select, textarea {
 					}
 
 			.tiles article.style1 > .image:before {
-				background-color: #f2849e;
+				background-color: #9d5bc7;
 			}
 
 			.tiles article.style2 > .image:before {
-				background-color: #7ecaf6;
+				background-color: #536364;
 			}
 
 			.tiles article.style3 > .image:before {
-				background-color: #7bd0c1;
+				background-color: #8CA1F3;
 			}
 
 			.tiles article.style4 > .image:before {
