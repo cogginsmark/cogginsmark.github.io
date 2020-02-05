@@ -2328,10 +2328,28 @@ input, select, textarea {
 
 		.image.left:hover, .image.right:hover {
 			  transform: scale(1.1);
-			  transition-duration: 1s;
+			  transition: 1s ease;
+		}
+		.small.image:hover {
+			  transform: scale(1.05);
+			  transition: 1s ease;
 		}
 .container {
   position: relative;
+}
+
+.small.image {
+    max-width:  33.3%;
+    
+}
+
+.three.image {
+    display:block;
+    text-align:center;
+}
+
+.block {
+    display:inline-block;
 }
 
 .middle {
@@ -2340,6 +2358,7 @@ transition: .5s;
   position: absolute;
   top: 50%;
   left: 50%;
+			padding: 0 1.5em 1em 0;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
@@ -2349,14 +2368,10 @@ transition: .5s;
   opacity: 1;
 }
 
-.container:hover .image.left .image.right {
-  opacity: 0.3;
-}
-
 .text {
   background-color: rgba(0,0,0, 0.6);
   color: #fff;
-  font-size: 12px;
+  font-size: 0.5em;
   padding: 1em 2em;
     border-radius:30px;
     text-transform: uppercase;
@@ -2370,8 +2385,17 @@ video {
 			.image.left img, .image.right img {
 				width: 100%;
 			}
+			.small.image img {
+				width: 100%;
+			}
 
 		.image.left {
+			float: left;
+			padding: 0 1.5em 1em 0;
+			top: 0.25em;
+		}
+
+		.small.image {
 			float: left;
 			padding: 0 1.5em 1em 0;
 			top: 0.25em;
