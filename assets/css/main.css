@@ -1,5 +1,5 @@
 @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900");
 
 /*
 	Phantom by HTML5 UP
@@ -99,7 +99,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #ffffff;
+		background: #fff;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2308,7 +2308,6 @@ input, select, textarea {
 			padding: 0;
 		}
 
-
 /* Image */
 
 	.image {
@@ -2328,11 +2327,34 @@ input, select, textarea {
 		}
 
 		.image.left:hover, .image.right:hover {
-			  transform: scale(1.5);
-			  transition-duration: 1s;
+			  transform: scale(1.05);
+			  transition: 1s ease;
+		}
+		.small.image:hover {
+			  transform: scale(1.05);
+			  transition: 1s ease;
 		}
 .container {
   position: relative;
+}
+
+.small.image {
+    max-width:  33.3%;
+    
+}
+
+.three.image {
+    display:block;
+    text-align:center;
+}
+
+.block {
+    display:inline-block;
+}
+
+.textcent {
+    text-align:center;
+    vertical-align: center;
 }
 
 .middle {
@@ -2341,6 +2363,7 @@ transition: .5s;
   position: absolute;
   top: 50%;
   left: 50%;
+padding: 0 1.5em 1em 0;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
@@ -2350,25 +2373,58 @@ transition: .5s;
   opacity: 1;
 }
 
-.container:hover .image.left .image.right {
-  opacity: 0.3;
-}
-
 .text {
   background-color: rgba(0,0,0, 0.6);
   color: #fff;
-  font-size: 12px;
-  padding: 1em 2em;
+  font-size: 0.7em;
+  padding: .7em 1.7em;
     border-radius:30px;
     text-transform: uppercase;
     font-weight: 700;
 }
 
+video {
+			padding: 0 1.5em 1em 0;
+    float:left;
+}
+
+iframe {
+			padding: 0 1.5em 1em 0;
+}
+
+.iframe-bigcontainer {
+  width:40%;
+    float:left;
+}
+
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+ 
+.iframe-container iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
 			.image.left img, .image.right img {
+				width: 100%;
+			}
+			.small.image img {
 				width: 100%;
 			}
 
 		.image.left {
+			float: left;
+			padding: 0 1.5em 1em 0;
+			top: 0.25em;
+		}
+
+		.small.image {
 			float: left;
 			padding: 0 1.5em 1em 0;
 			top: 0.25em;
