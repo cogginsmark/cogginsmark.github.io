@@ -2655,6 +2655,18 @@ iframe {
 			opacity: 0.25;
 		}
 
+/* Center */
+
+	.center {
+        text-align:center;
+        vertical-align: middle;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Tiles */
 
 	.tiles {
@@ -2821,6 +2833,10 @@ iframe {
 
 			.tiles article.style6 > .image:before {
 				background-color: #8499e7;
+			}
+
+			.tiles article.style7 > .image:before {
+				background-color: #ff215e;
 			}
 
 			body:not(.is-touch) .tiles article:hover > .image {
