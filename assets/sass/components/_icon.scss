@@ -16,6 +16,11 @@
 		}
 
 		&:before {
+			// Font Awesome 7 exposes each icon's glyph as the --fa custom
+			// property (its shared :before rule only applies to FA's own
+			// .fa/.fa-solid/.fa-brands classes, which this template doesn't
+			// use), so pull the glyph from --fa here.
+			content: var(--fa);
 			line-height: inherit;
 		}
 
@@ -27,7 +32,7 @@
 
 		&.brands {
 			&:before {
-				font-family: 'Font Awesome 5 Brands';
+				font-family: 'Font Awesome 7 Brands';
 			}
 		}
 

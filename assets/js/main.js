@@ -59,7 +59,7 @@
 
 					})
 					.on('blur focus', function() {
-						$this.val($.trim($this.val()));
+						$this.val($this.val().trim());
 					})
 					.on('input blur focus --init', function() {
 
