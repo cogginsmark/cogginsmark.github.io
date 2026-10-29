@@ -41,6 +41,7 @@
 
 	@media (hover: hover) and (pointer: fine) {
 		.container:hover .middle,
+		.container a:hover .middle,
 		.container:focus-visible .middle,
 		.container:focus-within .middle {
 			opacity: 1;
@@ -53,37 +54,83 @@
 		}
 	}
 
+// On touch the pill has to show itself, but only the gallery cards get
+// the full centred pill. An inline image sitting in a paragraph gets a
+// small chip in its corner instead, so the badge never stamps over the
+// middle of a picture the text is wrapped around.
+
 	@media (hover: none) {
-		.middle {
+		.three.image .middle {
 			opacity: 1;
 		}
+
+		.image.left .middle,
+		.image.right .middle {
+			opacity: 1;
+			top: auto;
+			left: auto;
+			bottom: 0.5em;
+			right: 0.5em;
+			transform: none;
+
+			.text {
+				font-size: 0.6em;
+				padding: 0.5em 1.1em;
+			}
+		}
 	}
 
-// Three-across gallery groups. Was a max-width and a float; now a
-// wrapping flex row that goes one-across on its own when the screen
-// gets narrow, whatever the exact width happens to be.
+// Gallery groups. The original system sized a card at a third of the
+// row (max-width: 33.3% floats); the first overhaul draft used a
+// wrapping flex row, which let a card stretch the whole row on narrow
+// screens. The system now: a three-column grid at every width, cards
+// filling their cell and nothing more, captions spanning the row.
 
 	.three.image {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1em;
-		justify-content: center;
+		align-items: start;
 		text-align: center;
 
-		> .container {
-			flex: 1 1 12em;
-			max-width: 24em;
+		> p {
+			grid-column: 1 / -1;
+			margin: 0;
 		}
 
-		> p {
-			flex-basis: 100%;
+		.container,
+		.container a,
+		.small.image {
+			display: block;
+		}
+
+		.small.image img {
+			width: 100%;
+			height: auto;
 		}
 	}
 
+// A small image outside a gallery group keeps its original cap.
+
 	.small.image {
+		max-width: 33.3%;
+
 		img {
 			width: 100%;
+			height: auto;
 		}
+	}
+
+// Inline images in body text. Some containers exist only to carry a
+// floated .image.left / .image.right and its pill; the wrapper box
+// itself just gets in the text's way. display: contents removes the
+// box, so the float joins the paragraph flow directly and the text
+// wraps the picture the way it was written to. The pill still
+// positions against the image, which is the positioned element.
+
+	.container:has(> a > .image.left),
+	.container:has(> a > .image.right) {
+		display: contents;
 	}
 
 // Embeds. The wrapper keeps its old name and shape, but aspect-ratio
@@ -135,10 +182,12 @@
 		height: auto;
 	}
 
-// Small utilities the pages already use.
+// Small utilities the pages already use. .block wraps whole
+// paragraphs (video and text together); as inline-block it
+// shrink-wrapped them to their longest line, so it is a real block.
 
 	.block {
-		display: inline-block;
+		display: block;
 	}
 
 	.textcent {

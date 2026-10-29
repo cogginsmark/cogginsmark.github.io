@@ -2322,6 +2322,7 @@ body.is-touch .tiles article .content {
 
 @media (hover: hover) and (pointer: fine) {
   .container:hover .middle,
+  .container a:hover .middle,
   .container:focus-visible .middle,
   .container:focus-within .middle {
     opacity: 1;
@@ -2333,27 +2334,56 @@ body.is-touch .tiles article .content {
   }
 }
 @media (hover: none) {
-  .middle {
+  .three.image .middle {
     opacity: 1;
+  }
+  .image.left .middle,
+  .image.right .middle {
+    opacity: 1;
+    top: auto;
+    left: auto;
+    bottom: 0.5em;
+    right: 0.5em;
+    transform: none;
+  }
+  .image.left .middle .text,
+  .image.right .middle .text {
+    font-size: 0.6em;
+    padding: 0.5em 1.1em;
   }
 }
 .three.image {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1em;
-  justify-content: center;
+  align-items: start;
   text-align: center;
 }
-.three.image > .container {
-  flex: 1 1 12em;
-  max-width: 24em;
-}
 .three.image > p {
-  flex-basis: 100%;
+  grid-column: 1/-1;
+  margin: 0;
+}
+.three.image .container,
+.three.image .container a,
+.three.image .small.image {
+  display: block;
+}
+.three.image .small.image img {
+  width: 100%;
+  height: auto;
 }
 
+.small.image {
+  max-width: 33.3%;
+}
 .small.image img {
   width: 100%;
+  height: auto;
+}
+
+.container:has(> a > .image.left),
+.container:has(> a > .image.right) {
+  display: contents;
 }
 
 iframe {
@@ -2401,7 +2431,7 @@ video {
 }
 
 .block {
-  display: inline-block;
+  display: block;
 }
 
 .textcent {
