@@ -2425,7 +2425,7 @@ video {
 }
 
 .block {
-  display: block;
+  display: flow-root;
 }
 
 .textcent {

@@ -180,12 +180,13 @@
 		height: auto;
 	}
 
-// Small utilities the pages already use. .block wraps whole
-// paragraphs (video and text together); as inline-block it
-// shrink-wrapped them to their longest line, so it is a real block.
+// Small utilities the pages already use. .block wraps a media-and-
+// text section; flow-root makes the section contain its floated
+// embed, so the float can never bleed past the section into whatever
+// follows it.
 
 	.block {
-		display: block;
+		display: flow-root;
 	}
 
 	.textcent {
