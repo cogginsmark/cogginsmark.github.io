@@ -134,9 +134,12 @@
 	}
 
 // Embeds. The wrapper keeps its old name and shape, but aspect-ratio
-// does the work the 56.25% padding used to do. Bare embeds (the Flux
-// page never got the wrapper) are made responsive where they stand:
-// no fixed pixel width survives.
+// does the work the 56.25% padding used to do. Sizing principle for
+// every content example on the site: fluid below the authored size,
+// never wider than it. Bare embeds (the Flux page never got the
+// wrapper) were authored at 560px, so they shrink with the screen but
+// cap at 560px; the wrapped embed keeps its original 40% float at
+// every width instead of going full-width on small screens.
 
 	iframe {
 		max-width: 100%;
@@ -146,6 +149,7 @@
 	iframe[src*="youtube-nocookie.com/embed"] {
 		border: 0;
 		width: 100%;
+		max-width: 560px;
 		height: auto;
 		aspect-ratio: 16 / 9;
 	}
@@ -154,12 +158,6 @@
 		width: 40%;
 		float: left;
 		padding: 0 1.5em 1em 0;
-
-		@include breakpoint('<=small') {
-			width: 100%;
-			float: none;
-			padding: 0 0 1em 0;
-		}
 	}
 
 	.iframe-container {

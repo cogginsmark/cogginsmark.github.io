@@ -2394,6 +2394,7 @@ iframe[src*="youtube.com/embed"],
 iframe[src*="youtube-nocookie.com/embed"] {
   border: 0;
   width: 100%;
+  max-width: 560px;
   height: auto;
   aspect-ratio: 16/9;
 }
@@ -2402,13 +2403,6 @@ iframe[src*="youtube-nocookie.com/embed"] {
   width: 40%;
   float: left;
   padding: 0 1.5em 1em 0;
-}
-@media screen and (max-width: 736px) {
-  .iframe-bigcontainer {
-    width: 100%;
-    float: none;
-    padding: 0 0 1em 0;
-  }
 }
 
 .iframe-container {
