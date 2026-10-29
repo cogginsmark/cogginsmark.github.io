@@ -1,0 +1,163 @@
+///
+/// Site custom layer — the gallery, embed and utility styles that used to
+/// live in assets/css/ice.css, a hand-kept copy of the stylesheet that no
+/// page ever linked. Brought into the Sass source 2026-10-28 as part of
+/// the template overhaul, with the hover and embed behaviour rebuilt on
+/// modern CSS. Values for the Full Size pill are Mark's originals.
+///
+
+// Gallery: a linked image with a "Full Size" pill over it.
+
+	.container {
+		position: relative;
+		display: block;
+	}
+
+	.middle {
+		transition: opacity 0.5s ease;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		pointer-events: none;
+	}
+
+	.text {
+		background-color: rgba(0, 0, 0, 0.6);
+		color: #fff;
+		font-size: 0.7em;
+		padding: 0.7em 1.7em;
+		border-radius: 30px;
+		text-transform: uppercase;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+// The pill appears on hover only where hover exists. On touch it is
+// simply visible, so the link announces itself without a first tap
+// being spent on a hover state that leads nowhere.
+
+	@media (hover: hover) and (pointer: fine) {
+		.container:hover .middle,
+		.container:focus-visible .middle,
+		.container:focus-within .middle {
+			opacity: 1;
+		}
+
+		.image.left:hover, .image.right:hover,
+		.small.image:hover {
+			transform: scale(1.05);
+			transition: transform 1s ease;
+		}
+	}
+
+	@media (hover: none) {
+		.middle {
+			opacity: 1;
+		}
+	}
+
+// Three-across gallery groups. Was a max-width and a float; now a
+// wrapping flex row that goes one-across on its own when the screen
+// gets narrow, whatever the exact width happens to be.
+
+	.three.image {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		justify-content: center;
+		text-align: center;
+
+		> .container {
+			flex: 1 1 12em;
+			max-width: 24em;
+		}
+
+		> p {
+			flex-basis: 100%;
+		}
+	}
+
+	.small.image {
+		img {
+			width: 100%;
+		}
+	}
+
+// Embeds. The wrapper keeps its old name and shape, but aspect-ratio
+// does the work the 56.25% padding used to do. Bare embeds (the Flux
+// page never got the wrapper) are made responsive where they stand:
+// no fixed pixel width survives.
+
+	iframe {
+		max-width: 100%;
+	}
+
+	iframe[src*="youtube.com/embed"],
+	iframe[src*="youtube-nocookie.com/embed"] {
+		border: 0;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+
+	.iframe-bigcontainer {
+		width: 40%;
+		float: left;
+		padding: 0 1.5em 1em 0;
+
+		@include breakpoint('<=small') {
+			width: 100%;
+			float: none;
+			padding: 0 0 1em 0;
+		}
+	}
+
+	.iframe-container {
+		position: relative;
+		aspect-ratio: 16 / 9;
+
+		iframe {
+			border: 0;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			aspect-ratio: auto;
+		}
+	}
+
+	video {
+		max-width: 100%;
+		height: auto;
+	}
+
+// Small utilities the pages already use.
+
+	.block {
+		display: inline-block;
+	}
+
+	.textcent {
+		text-align: center;
+	}
+
+	img.center {
+		display: block;
+		margin-inline: auto;
+		max-width: 100%;
+		height: auto;
+	}
+
+// Motion stays honest.
+
+	@media (prefers-reduced-motion: reduce) {
+		.middle,
+		.image.left, .image.right,
+		.small.image {
+			transition: none;
+		}
+	}
